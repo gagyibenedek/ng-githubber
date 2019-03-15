@@ -1,5 +1,5 @@
 <app-result-item 
-  *ngFor="let result of results | paginate: { itemsPerPage: 10, currentPage: p }"
+  *ngFor="let result of results | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalItems }"
   [result]="result">
 </app-result-item>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<pagination-controls (pageChange)="getPage($event)"></pagination-controls>

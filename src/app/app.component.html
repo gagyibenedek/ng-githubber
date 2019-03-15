@@ -1,4 +1,11 @@
 <div style="text-align:center">
-  <app-search (onSearch)="onSearch($event)" ></app-search>
-  <app-result-list [results]="results"></app-result-list>
+  <app-search (onSearch)="onSearch($event)"></app-search>
+  <app-result-list 
+    [results]="results"
+    [totalItems]="totalItems"
+    [currentPage]="currentPage"
+    *ngIf="results.length > 0 && !spinnerVisible"
+    (onGetPage)="onGetPage($event)">
+  </app-result-list>
+  <div *ngIf="spinnerVisible">Loading...</div>
 </div>

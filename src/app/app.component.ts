@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import ResultItem from '../models/resultItem';
+import { ResultItem, parseResultItem } from '../models/resultItem';
 import { GitHubService } from './services/git-hub.service';
 
 @Component({
@@ -10,21 +10,28 @@ import { GitHubService } from './services/git-hub.service';
 })
 export class AppComponent {
   public results: Array<ResultItem> = [];
+  public totalItems: number;
+  public currentPage: number;
+  public spinnerVisible: boolean = false;
 
   constructor(private gitHubService: GitHubService) {
 
   }
 
   onSearch(searchTerm: string) {
+    this.spinnerVisible = true;
     this.gitHubService.search(searchTerm).subscribe((data:any) => {
-      this.results = data.items.map((item:any) => {
-        const resultItem: ResultItem = {
-          name: item.name,
-          fullName: item.full_name,
-          url: item.url
-        };
-        return resultItem;
-      })
+      this.results = data.items.map(parseResultItem);
+      this.totalItems = data.total_count;
+      this.currentPage = 1;
+      this.spinnerVisible = false;
+    })
+  }
+
+  onGetPage(page: number) {
+    this.gitHubService.getPage(page).subscribe((data:any) => {
+      this.results = data.items.map(parseResultItem);
+      this.currentPage = page;
     })
   }
 }

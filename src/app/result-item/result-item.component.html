@@ -1,3 +1,13 @@
-<p>
+<div>
   {{result.name}}({{result.fullName}}) - {{result.url}}
-</p>
+  <br/>
+  <button (click)="toggleDetails()">More info</button>
+  <div class="deatils" *ngIf="detailsVisible">
+    <img src="{{result.owner.avatarUrl}}" alt="Avatar">
+      <span>{{result.owner.login}}</span>
+      <span>Description: {{result.description}}</span>
+      <span>Forks: {{result.forksCount}}</span>
+      <span>Stargazers: {{result.stargazersCount}}</span>
+      <span>Open issues: {{result.openIssuesCount}}</span>
+  </div>
+</div>

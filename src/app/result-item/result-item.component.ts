@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import ResultItem from 'src/models/resultItem';
+import { ResultItem } from 'src/models/resultItem';
 
 @Component({
   selector: 'app-result-item',
@@ -8,9 +8,13 @@ import ResultItem from 'src/models/resultItem';
 })
 export class ResultItemComponent implements OnInit {
   @Input() result: ResultItem;
+  public detailsVisible: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleDetails() {
+    this.detailsVisible = !this.detailsVisible;
+  }
 }
