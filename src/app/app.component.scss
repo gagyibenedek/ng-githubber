@@ -1,5 +1,8 @@
+@import '../variables';
+
 .githubber {
     text-align: center;
     font-family: 'Roboto Mono', monospace;
     font-size: 10px;
+    color: $c-dark;
 }

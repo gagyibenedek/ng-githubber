@@ -33,17 +33,21 @@ export class AppComponent {
   }
 
   onGetPage(page: number) {
+    this.spinnerVisible = true;
     this.gitHubService.getPage(page).subscribe((data:any) => {
       this.results = data.items.map(parseResultItem);
       this.currentPage = page;
+      this.spinnerVisible = false;
     })
   }
 
   onGetIssues(fullName: string) {
+    this.spinnerVisible = true;
     this.gitHubService.getIssues(fullName).subscribe((data:any) => {
       this.issues = data.items.map(parseIssueItem);
       this.issuesCount = data.total_count;
       this.isIssuesPanelOpen = true;
+      this.spinnerVisible = false;
     })
   }
 
@@ -53,9 +57,11 @@ export class AppComponent {
   }
 
   onShowAllIssues() {
+    this.spinnerVisible = true;
     this.gitHubService.getAllIssues(this.issuesCount).subscribe((data:any) => {
       this.issues = data.items.map(parseIssueItem);
       this.isIssuesPanelOpen = true;
+      this.spinnerVisible = false;
     })
   }
 }

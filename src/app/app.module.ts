@@ -10,13 +10,15 @@ import { ResultListComponent } from './result-list/result-list.component';
 import { ResultItemComponent } from './result-item/result-item.component';
 
 import {GitHubService} from './services/git-hub.service';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     ResultListComponent,
-    ResultItemComponent
+    ResultItemComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
