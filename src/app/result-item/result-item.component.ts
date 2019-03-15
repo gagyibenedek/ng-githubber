@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ResultItem } from 'src/models/resultItem';
 
 @Component({
@@ -8,10 +8,15 @@ import { ResultItem } from 'src/models/resultItem';
 })
 export class ResultItemComponent implements OnInit {
   @Input() result: ResultItem;
+  @Output() onGetIssues = new EventEmitter<string>();
   public detailsVisible: boolean = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getIssues() {
+    this.onGetIssues.emit(this.result.fullName);
   }
 
   toggleDetails() {

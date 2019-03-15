@@ -1,11 +1,17 @@
-<div style="text-align:center">
+<div class="githubber">
   <app-search (onSearch)="onSearch($event)"></app-search>
   <app-result-list 
+    *ngIf="results.length > 0 && !spinnerVisible"
     [results]="results"
     [totalItems]="totalItems"
     [currentPage]="currentPage"
-    *ngIf="results.length > 0 && !spinnerVisible"
-    (onGetPage)="onGetPage($event)">
+    [issues]="issues"
+    [isIssuesPanelOpen]="isIssuesPanelOpen"
+    [issuesCount]="issuesCount"
+    (onGetPage)="onGetPage($event)"
+    (onGetIssues)="onGetIssues($event)"
+    (onCloseIssuesPanel)="onCloseIssuesPanel()"
+    (onShowAllIssues)="onShowAllIssues()">
   </app-result-list>
   <div *ngIf="spinnerVisible">Loading...</div>
 </div>

@@ -1,6 +1,8 @@
 <div>
   {{result.name}}({{result.fullName}}) - {{result.url}}
   <br/>
+  <button (click)="getIssues()">Show open issues</button>
+  <br/>
   <button (click)="toggleDetails()">More info</button>
   <div class="deatils" *ngIf="detailsVisible">
     <img src="{{result.owner.avatarUrl}}" alt="Avatar">
