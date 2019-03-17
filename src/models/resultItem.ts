@@ -18,7 +18,7 @@ export function parseResultItem(item: any): ResultItem {
     return {
         name: item.name,
         fullName: item.full_name,
-        url: item.url,
+        url: item.url.replace('https://api.github', 'https://github').replace('github.com/repos', 'github.com'),
         description: item.description,
         forksCount: item.forks_count,
         stargazersCount: item.stargazers_count,

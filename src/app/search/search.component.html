@@ -1,5 +1,7 @@
-<section class="search" [ngClass]="{'small': searchDone}">
+<section [ngClass]="{'small': searchDone}">
   <h1 class="header">Githubber</h1>
-  <input class="term" type="text" [(ngModel)]="searchTerm">
-  <button (click)="doSearch()" class="btn"></button>
+  <form (ngSubmit)="doSearch()">
+    <input class="term" type="text" [(ngModel)]="searchTerm" name="searchTerm">
+    <button (click)="doSearch()" class="btn"></button>
+  </form>
 </section>

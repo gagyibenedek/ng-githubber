@@ -1,47 +1,35 @@
 @import '../../variables';
 
-.search {
-    .header {
-        font-size: 24px;
-        transition: font-size $transition-constant;
-    }
-    
-    .term {
-        border: none;
-        border-bottom: 3px solid $c-dark;
-        background-color: transparent;
-        padding: 5px 30px;
-        font-size: 3rem;
-        color: $c-dark;
-        text-align: center;
-    }
-    
-    .btn {
-        $btn-size: 38px;
-        width: $btn-size;
-        height: $btn-size;
-        transition: width $transition-constant, height $transition-constant;
-        background-image: url('../../assets/search.svg');
-        background-size: cover;
-        background-color: transparent;
-        background-repeat: no-repeat;
-        border: none;
-        vertical-align: bottom;
-        margin-bottom: 10px;
-        cursor: pointer;
-    }
+.header {
+    font-size: 65px;
+    transition: font-size $transition-constant;
 }
 
-.search.small {
+.term {
+    border: none;
+    border-bottom: 3px solid $c-dark;
+    background-color: transparent;
+    padding: 5px 30px;
+    font-size: 3rem;
+    color: $c-dark;
+    text-align: center;
+}
 
-    .header {
-        font-size: 16px;
-    }
+.btn {
+    $btn-size: 38px;
+    width: $btn-size;
+    height: $btn-size;
+    transition: width $transition-constant, height $transition-constant;
+    background-image: url('../../assets/search.svg');
+    background-size: cover;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    vertical-align: bottom;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
 
-    .btn {
-        $btn-size: 20px;
-        width: $btn-size;
-        height: $btn-size;
-    }
-
+.small .header {
+    font-size: 0;
 }

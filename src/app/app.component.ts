@@ -34,6 +34,7 @@ export class AppComponent {
 
   onGetPage(page: number) {
     this.spinnerVisible = true;
+    this.isIssuesPanelOpen = false;
     this.gitHubService.getPage(page).subscribe((data:any) => {
       this.results = data.items.map(parseResultItem);
       this.currentPage = page;

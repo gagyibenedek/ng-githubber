@@ -1,15 +1,25 @@
-<div>
-  {{result.name}}({{result.fullName}}) - {{result.url}}
-  <br/>
-  <button (click)="getIssues()">Show open issues</button>
-  <br/>
-  <button (click)="toggleDetails()">More info</button>
+<div class="result-item">
+  <h2 class="name">
+    {{result.name}}
+  </h2>
+  <h3 class="full-name">
+    {{result.fullName}}
+  </h3>
+  <a class="url" href="{{result.url}}" target="_blank" rel="noopener noreferrer">Visit repo</a>
+  <div class="badge">
+    <img src="{{result.owner.avatarUrl}}" alt="{{result.owner.login}}'s avatar" class="avatar">
+    <span class="owner">{{result.owner.login}}</span>
+  </div>
+  <button class="more" (click)="toggleDetails()">
+    <span *ngIf="detailsVisible">Less</span>
+    <span *ngIf="!detailsVisible">More</span>
+  </button>
   <div class="deatils" *ngIf="detailsVisible">
-    <img src="{{result.owner.avatarUrl}}" alt="Avatar">
-      <span>{{result.owner.login}}</span>
-      <span>Description: {{result.description}}</span>
-      <span>Forks: {{result.forksCount}}</span>
-      <span>Stargazers: {{result.stargazersCount}}</span>
-      <span>Open issues: {{result.openIssuesCount}}</span>
+    <span>{{result.owner.login}}</span>
+    <span>Description: {{result.description}}</span>
+    <span>Forks: {{result.forksCount}}</span>
+    <span>Stargazers: {{result.stargazersCount}}</span>
+    <span>Open issues: {{result.openIssuesCount}}</span>
+    <button (click)="getIssues()">Show open issues</button>
   </div>
 </div>
