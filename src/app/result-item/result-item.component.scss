@@ -20,6 +20,7 @@
     font-size: $f_large;
 }
 
+$badge-width: 120px;
 .badge {
     position: absolute;
     top: 20px;
@@ -28,11 +29,14 @@
 }
 
 .avatar {
-    width: 50px;
+    width: $badge-width;
 }
 
 .owner {
     font-size: $f_normal;
+    max-width: $badge-width;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .url {
@@ -51,6 +55,22 @@
     &:hover {
         transform: scale(1.1);
     }
+}
+
+.details {
+    text-align: left;
+    margin-top: 30px;
+    font-size: $f_normal;
+    display: flex;
+}
+
+.stats {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.description {
+    display: inline-block;
 }
 
 
