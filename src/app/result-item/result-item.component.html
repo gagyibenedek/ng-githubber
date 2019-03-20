@@ -1,27 +1,43 @@
-<div class="result-item">
-  <h2 class="name">
-    {{result.name}}
-  </h2>
-  <h3 class="full-name">
-    {{result.fullName}}
-  </h3>
-  <a class="url" href="{{result.url}}" target="_blank" rel="noopener noreferrer">Visit repo</a>
+<div class="result-item" [ngClass]="{'details': detailsVisible}">
   <div class="badge">
     <img src="{{result.owner.avatarUrl}}" alt="{{result.owner.login}}'s avatar" class="avatar">
-    <div class="owner" title="{{result.owner.login}}">{{result.owner.login}}</div>
+    <br />
+    <span class="owner" title="{{result.owner.login}}">{{result.owner.login}}</span>
   </div>
+  <div class="main">
+    <h2 class="name">
+      {{result.name}}
+    </h2>
+    <h3 class="full-name">
+      {{result.fullName}}
+    </h3>
+    <a class="url" href="{{result.url}}" target="_blank" rel="noopener noreferrer">Visit repo</a>
+  </div>
+
+  <table class="stats">
+    <tr>
+      <td>Forks</td> 
+      <td class="stat-value">{{result.forksCount}}</td>
+    </tr>
+    <tr>
+      <td>Stargazers</td>
+      <td class="stat-value">{{result.stargazersCount}}</td>
+    </tr>
+    <tr>
+      <td>Open issues</td> 
+      <td class="stat-value">{{result.openIssuesCount}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button class="issues" (click)="getIssues()">Show open issues</button>
+      </td>
+    </tr>
+  </table>
+  
+  <div class="description">{{result.description}}</div>
+
   <button class="more" (click)="toggleDetails()">
     <span *ngIf="detailsVisible">Less</span>
     <span *ngIf="!detailsVisible">More</span>
   </button>
-  <div class="details" *ngIf="detailsVisible">
-    <div class="stats">
-      <div>Forks: {{result.forksCount}}</div>
-      <div>Stargazers: {{result.stargazersCount}}</div>
-      <div>Open issues: {{result.openIssuesCount}}</div>
-      <button (click)="getIssues()">Show open issues</button>
-    </div>
-
-    <div class="description">Description: {{result.description}}</div>
-  </div>
 </div>
