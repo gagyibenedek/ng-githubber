@@ -4,9 +4,9 @@
   (onGetIssues)="getIssues($event)">
 </app-result-item>
 <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
-<div class="issues-wrapper" *ngIf="isIssuesPanelOpen">
+<div class="issues-wrapper" *ngIf="isIssuesPanelOpen" (click)="closeIssuesPanel()">
   <div class="issues">
-    <button (click)="closeIssuesPanel()">X</button>
+    <button (click)="closeIssuesPanel()" class="close"></button>
     <ul *ngIf="issues.length > 0">
       <li *ngFor="let issue of issues">{{issue.title}}</li>
     </ul>
