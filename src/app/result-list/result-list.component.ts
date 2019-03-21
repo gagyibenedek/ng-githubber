@@ -17,7 +17,7 @@ export class ResultListComponent implements OnInit {
   @Output() onGetPage = new EventEmitter<string>();
   @Output() onGetIssues = new EventEmitter<string>();
   @Output() onCloseIssuesPanel = new EventEmitter<undefined>();
-  @Output() onShowAllIssues = new EventEmitter<undefined>();
+  @Output() onShowTenMore = new EventEmitter<undefined>();
 
   constructor() { }
 
@@ -35,8 +35,8 @@ export class ResultListComponent implements OnInit {
     this.onGetIssues.emit(fullName);
   }
 
-  showAllIssues() {
-    this.onShowAllIssues.emit();
+  showTenMore() {
+    this.onShowTenMore.emit();
   }
 
 }

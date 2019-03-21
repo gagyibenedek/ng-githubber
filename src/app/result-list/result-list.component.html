@@ -4,12 +4,12 @@
   (onGetIssues)="getIssues($event)">
 </app-result-item>
 <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
-<div class="issues" *ngIf="isIssuesPanelOpen">
-  <button (click)="closeIssuesPanel()">X</button>
-  <ul *ngIf="issues.length > 0">
-    <li *ngFor="let issue of issues">{{issue.title}}</li>
-  </ul>
-  <button (click)="showAllIssues()" *ngIf="issuesCount > issues.length">Show all issues</button>
-
-  <span *ngIf="issues.length === 0">Loading...</span>
+<div class="issues-wrapper" *ngIf="isIssuesPanelOpen">
+  <div class="issues">
+    <button (click)="closeIssuesPanel()">X</button>
+    <ul *ngIf="issues.length > 0">
+      <li *ngFor="let issue of issues">{{issue.title}}</li>
+    </ul>
+    <button (click)="showTenMore()" *ngIf="issuesCount > issues.length">Show 10 more issues</button>
+  </div>
 </div>

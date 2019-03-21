@@ -57,10 +57,10 @@ export class AppComponent {
     this.issues = [];
   }
 
-  onShowAllIssues() {
+  onShowTenMore() {
     this.spinnerVisible = true;
-    this.gitHubService.getAllIssues(this.issuesCount).subscribe((data:any) => {
-      this.issues = data.items.map(parseIssueItem);
+    this.gitHubService.getTenMoreIssues().subscribe((data:any) => {
+      this.issues = this.issues.concat(data.items.map(parseIssueItem));
       this.isIssuesPanelOpen = true;
       this.spinnerVisible = false;
     })

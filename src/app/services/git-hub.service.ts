@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 export class GitHubService {
   private currentTerm: string;
   private currentFullName: string;
+  private currentPage: number = 0; 
   constructor(private http: HttpClient) { }
 
   search(term: string) {
@@ -21,7 +22,8 @@ export class GitHubService {
     return this.http.get(`https://api.github.com/search/issues?per_page=10&page=1&q=state:open+repo:${this.currentFullName}`);
   }
 
-  getAllIssues(issueCount: number) {
-    return this.http.get(`https://api.github.com/search/issues?per_page=${issueCount}&q=state:open+repo:${this.currentFullName}`);
+  getTenMoreIssues() {
+    this.currentPage++;
+    return this.http.get(`https://api.github.com/search/issues?per_page=10&page=${this.currentPage}&q=state:open+repo:${this.currentFullName}`);
   }
 }

@@ -5,7 +5,7 @@
     class="search">
   </app-search>
   <app-result-list 
-    *ngIf="results.length > 0 && !spinnerVisible"
+    *ngIf="results.length > 0"
     [results]="results"
     [totalItems]="totalItems"
     [currentPage]="currentPage"
@@ -15,9 +15,7 @@
     (onGetPage)="onGetPage($event)"
     (onGetIssues)="onGetIssues($event)"
     (onCloseIssuesPanel)="onCloseIssuesPanel()"
-    (onShowAllIssues)="onShowAllIssues()">
+    (onShowTenMore)="onShowTenMore()">
   </app-result-list>
-  <div *ngIf="spinnerVisible">
-    <app-spinner></app-spinner>
-  </div>
+  <app-spinner *ngIf="spinnerVisible"></app-spinner>
 </div>
