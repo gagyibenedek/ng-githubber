@@ -8,11 +8,18 @@ import { ResultItem } from 'src/models/resultItem';
 })
 export class ResultItemComponent implements OnInit {
   @Input() result: ResultItem;
+  @Output() onShowCharts = new EventEmitter<string>();
   @Output() onGetIssues = new EventEmitter<string>();
   public detailsVisible: boolean = false;
+  public chartColors = {domain: ['#ffa400', '#009ffd', '#2a2a72', '232528']};
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showCharts() {
+    this.onShowCharts.emit(this.result.fullName);
   }
 
   getIssues() {
@@ -21,5 +28,8 @@ export class ResultItemComponent implements OnInit {
 
   toggleDetails() {
     this.detailsVisible = !this.detailsVisible;
+    if(this.detailsVisible) {
+      this.showCharts();
+    }
   }
 }

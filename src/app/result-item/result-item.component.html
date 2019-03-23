@@ -36,6 +36,49 @@
   
   <div class="description">{{result.description}}</div>
 
+  <div class="charts">
+    <div>
+      <ngx-charts-bar-vertical *ngIf="result.commitChartData.length" 
+        [results]="result.commitChartData"
+        [view]="[300, 200]"
+        [scheme]="chartColors"
+        [gradient]="gradient"
+        [xAxis]="true"
+        [yAxis]="true"
+        [showYAxisLabel]="true"
+        [yAxisLabel]="'Number of commits'">
+      </ngx-charts-bar-vertical>
+      <img src="../../assets/spinner.svg" 
+        class="commit-spinner"
+        *ngIf="!result.commitChartData.length && !result.noCommitData" >
+      <h3 *ngIf="result.commitChartData.length" >
+        Commit spread by weekdays
+      </h3>
+      <h3 *ngIf="result.noCommitData">
+        Not enough data to draw a chart about the commits :(
+      </h3>
+    </div>
+  
+    <div>
+      <ngx-charts-pie-chart *ngIf="result.prChartData.length"
+        [results]="result.prChartData"
+        [view]="[400, 200]"
+        [labels]="true"
+        [scheme]="chartColors">
+      </ngx-charts-pie-chart>
+      <img src="../../assets/spinner.svg" 
+        class="pr-spinner"
+        *ngIf="!result.prChartData.length && !result.noPRData" >
+      <h3 *ngIf="result.prChartData.length">
+        Top {{result.prChartData.length}} users by nr. of PR's
+      </h3>
+      <h3 *ngIf="result.noPRData">
+        Not enough data to draw a chart about the PR's :(
+      </h3>
+    </div>
+
+  </div>
+
   <button class="btn more" (click)="toggleDetails()">
     <span *ngIf="detailsVisible">Less</span>
     <span *ngIf="!detailsVisible">More</span>

@@ -5,7 +5,8 @@
   <app-result-item 
     *ngFor="let result of results | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalItems }"
     [result]="result"
-    (onGetIssues)="getIssues($event)">
+    (onGetIssues)="getIssues($event)"
+    (onShowCharts)="showCharts($event)">
   </app-result-item>
   <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
   <div class="issues-wrapper" *ngIf="isIssuesPanelOpen" (click)="closeIssuesPanel()">

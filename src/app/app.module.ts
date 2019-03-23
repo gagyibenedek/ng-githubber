@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -24,7 +26,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    NgxChartsModule
   ],
   providers: [GitHubService],
   bootstrap: [AppComponent]

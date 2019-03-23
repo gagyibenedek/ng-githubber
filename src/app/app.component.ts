@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { ResultItem, parseResultItem } from '../models/resultItem';
 import { IssueItem, parseIssueItem } from '../models/issueItem';
+import { ChartData, commitDataToBarChartDataArray, prDataToPieChartDataArray } from '../models/chartData'
 import { GitHubService } from './services/git-hub.service';
 
 @Component({
@@ -41,9 +42,37 @@ export class AppComponent {
     })
   }
 
-  onGetIssues(fullName: string) {
+  onShowCharts(repo: string) {
+    this.gitHubService.getCommits(repo).subscribe((data:any) => {
+      const chartData: Array<ChartData> = commitDataToBarChartDataArray(data.items);
+      this.results.map(result => {
+        if(result.fullName === repo) {
+          result.commitChartData = chartData;
+          if(!chartData.length) {
+            result.noCommitData = true;
+          }
+        }
+        return result;
+      })
+    })
+
+    this.gitHubService.getClosedPRs(repo).subscribe((data:any) => {
+      const chartData: Array<ChartData> = prDataToPieChartDataArray(data.items);
+      this.results.map(result => {
+        if(result.fullName === repo) {
+          result.prChartData = chartData;
+          if(!chartData.length) {
+            result.noPRData = true;
+          }
+        }
+        return result;
+      });
+    });
+  }
+
+  onGetIssues(repo: string) {
     this.spinnerVisible = true;
-    this.gitHubService.getIssues(fullName).subscribe((data:any) => {
+    this.gitHubService.getIssues(repo).subscribe((data:any) => {
       this.issues = data.items.map(parseIssueItem);
       this.issuesCount = data.total_count;
       this.isIssuesPanelOpen = true;

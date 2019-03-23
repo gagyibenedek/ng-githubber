@@ -15,6 +15,7 @@ export class ResultListComponent implements OnInit {
   @Input() isIssuesPanelOpen: boolean;
   @Input() issuesCount: number;
   @Output() onGetPage = new EventEmitter<string>();
+  @Output() onShowCharts = new EventEmitter<string>();
   @Output() onGetIssues = new EventEmitter<string>();
   @Output() onCloseIssuesPanel = new EventEmitter<undefined>();
 
@@ -30,8 +31,12 @@ export class ResultListComponent implements OnInit {
     this.onCloseIssuesPanel.emit();
   }
 
-  getIssues(fullName: string) {
-    this.onGetIssues.emit(fullName);
+  showCharts(repo: string) {
+    this.onShowCharts.emit(repo);
+  }
+
+  getIssues(repo: string) {
+    this.onGetIssues.emit(repo);
   }
 
   getAgeClasses(days):SeverityClasses {

@@ -1,3 +1,5 @@
+import { ChartData } from './chartData';
+
 export interface ResultItem {
     name: string;
     fullName: string;
@@ -7,6 +9,10 @@ export interface ResultItem {
     stargazersCount: number;
     openIssuesCount: number;
     owner: Owner;
+    commitChartData: Array<ChartData>;
+    prChartData: Array<ChartData>;
+    noCommitData: boolean;
+    noPRData: boolean;
 }
 
 interface Owner {
@@ -26,7 +32,11 @@ export function parseResultItem(item: any): ResultItem {
         owner: {
             login: item.owner.login,
             avatarUrl: item.owner.avatar_url
-        }
+        },
+        commitChartData: [],
+        prChartData: [],
+        noCommitData: false,
+        noPRData: false
     }
 }
 
