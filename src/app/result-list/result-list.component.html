@@ -1,15 +1,47 @@
-<app-result-item 
-  *ngFor="let result of results | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalItems }"
-  [result]="result"
-  (onGetIssues)="getIssues($event)">
-</app-result-item>
-<pagination-controls (pageChange)="getPage($event)"></pagination-controls>
-<div class="issues-wrapper" *ngIf="isIssuesPanelOpen" (click)="closeIssuesPanel()">
-  <div class="issues">
-    <button (click)="closeIssuesPanel()" class="close"></button>
-    <ul *ngIf="issues.length > 0">
-      <li *ngFor="let issue of issues">{{issue.title}}</li>
-    </ul>
-    <button (click)="showTenMore()" *ngIf="issuesCount > issues.length">Show 10 more issues</button>
+<div class="no-result" *ngIf="totalItems === 0">
+  There were no repos found using the given keyword :(
+</div>
+<div *ngIf="results.length > 0">
+  <app-result-item 
+    *ngFor="let result of results | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalItems }"
+    [result]="result"
+    (onGetIssues)="getIssues($event)">
+  </app-result-item>
+  <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
+  <div class="issues-wrapper" *ngIf="isIssuesPanelOpen" (click)="closeIssuesPanel()">
+    <div class="issues">
+      <button (click)="closeIssuesPanel()" class="close"></button>
+      <ul class="issue-list" *ngIf="issues.length > 0">
+        <li class="issue-item" 
+          *ngFor="let issue of issues">
+          <h3 class="issue-title">{{issue.title}}</h3>
+          <table class="info">
+            <tr>
+              <td>
+                Age
+              </td>
+              <td class="value">
+                  <span [ngClass]="getAgeClasses(issue.age)">{{issue.age}}</span>
+              </td>
+              <td>
+                days
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Last update
+              </td>
+              <td class="value">
+                <span [ngClass]="getLastUpdatedClasses(issue.lastUpdate)">{{issue.lastUpdate}}</span>
+              </td>
+              <td>
+                days ago
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+
+    </div>
   </div>
 </div>

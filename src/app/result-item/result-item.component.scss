@@ -78,12 +78,16 @@ $badge-width: 120px;
     grid-row: 2;
     display: inline-block;
     font-size: $f_large;
+    padding-bottom: 18px;
 }
 
 .more {
     position: absolute;
     bottom: 20px;
     right: 20px;
+}
+
+.btn {
     background-color: transparent;
     border: 1px solid $c_dark;
     transition: transform $transition-constant;

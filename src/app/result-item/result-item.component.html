@@ -29,14 +29,14 @@
     </tr>
     <tr>
       <td colspan="2">
-        <button class="issues" (click)="getIssues()">Show open issues</button>
+        <button class="btn issues" (click)="getIssues()">Show open issues</button>
       </td>
     </tr>
   </table>
   
   <div class="description">{{result.description}}</div>
 
-  <button class="more" (click)="toggleDetails()">
+  <button class="btn more" (click)="toggleDetails()">
     <span *ngIf="detailsVisible">Less</span>
     <span *ngIf="!detailsVisible">More</span>
   </button>

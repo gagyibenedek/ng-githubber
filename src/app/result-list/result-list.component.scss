@@ -1,5 +1,11 @@
 @import '../../variables';
 
+.no-result {
+    font-size: $f_large;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
 .issues-wrapper {
     position: fixed;
     top: 0;
@@ -15,7 +21,7 @@
 .issues {
     max-height: 90vh;
     overflow-y: auto;
-    background-color: $c-bg;
+    background-color: $c-light;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     padding: 30px;
     position: relative;
@@ -26,9 +32,10 @@
     top: 10px;
     right: 10px;
     border: none;
-    width: 20px;
-    height: 20px;
-    background-size: cover;
+    width: 10px;
+    height: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
     background-color: transparent;
     background-image: url('../../assets/close-button.svg');
     cursor: pointer;
@@ -37,4 +44,48 @@
     &:hover {
         transform: scale(1.1);
     }
+}
+
+.issue-list {
+    list-style: none;
+    padding: 0;
+    font-size: $f_small;
+    width: 50%;
+}
+
+.issue-item {
+    border-bottom: 1px solid $c_dark;
+    padding: 15px;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.issue-title {
+    font-size: $f_small;
+    font-weight: 700;
+    margin: 0;
+}
+
+.info {
+    text-align: left;
+    margin: 10px auto 0;
+}
+
+.value {
+    font-weight: 700;
+    text-align: right;
+}
+
+.ok {
+    color: $c-ok;
+}
+
+.warn {
+    color: $c-warn;
+}
+
+.old {
+    color: $c-error;
 }

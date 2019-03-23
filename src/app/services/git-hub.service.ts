@@ -19,11 +19,6 @@ export class GitHubService {
 
   getIssues(fullName: string) {
     this.currentFullName = fullName;
-    return this.http.get(`https://api.github.com/search/issues?per_page=10&page=1&q=state:open+repo:${this.currentFullName}`);
-  }
-
-  getTenMoreIssues() {
-    this.currentPage++;
-    return this.http.get(`https://api.github.com/search/issues?per_page=10&page=${this.currentPage}&q=state:open+repo:${this.currentFullName}`);
+    return this.http.get(`https://api.github.com/search/issues?sort=created&per_page=5&page=1&q=state:open+repo:${this.currentFullName}`);
   }
 }

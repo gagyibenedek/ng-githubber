@@ -16,7 +16,6 @@ export class AppComponent {
   public issues: Array<IssueItem> = [];
   public isIssuesPanelOpen: boolean = false;
   public issuesCount: number = 0;
-
   public spinnerVisible: boolean = false;
 
   constructor(private gitHubService: GitHubService) {}
@@ -55,14 +54,5 @@ export class AppComponent {
   onCloseIssuesPanel() {
     this.isIssuesPanelOpen = false;
     this.issues = [];
-  }
-
-  onShowTenMore() {
-    this.spinnerVisible = true;
-    this.gitHubService.getTenMoreIssues().subscribe((data:any) => {
-      this.issues = this.issues.concat(data.items.map(parseIssueItem));
-      this.isIssuesPanelOpen = true;
-      this.spinnerVisible = false;
-    })
   }
 }

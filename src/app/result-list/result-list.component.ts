@@ -17,7 +17,6 @@ export class ResultListComponent implements OnInit {
   @Output() onGetPage = new EventEmitter<string>();
   @Output() onGetIssues = new EventEmitter<string>();
   @Output() onCloseIssuesPanel = new EventEmitter<undefined>();
-  @Output() onShowTenMore = new EventEmitter<undefined>();
 
   constructor() { }
 
@@ -35,8 +34,26 @@ export class ResultListComponent implements OnInit {
     this.onGetIssues.emit(fullName);
   }
 
-  showTenMore() {
-    this.onShowTenMore.emit();
+  getAgeClasses(days):SeverityClasses {
+    return {
+      ok: days <= 5,
+      warn: days > 5 && days < 20,
+      old: days >= 20
+    }
   }
 
+  getLastUpdatedClasses(days):SeverityClasses {
+    return {
+      ok: days <= 2,
+      warn: days > 2 && days < 7,
+      old: days >= 7
+    }
+  }
+
+}
+
+interface SeverityClasses {
+  ok: boolean;
+  warn: boolean;
+  old: boolean;
 }

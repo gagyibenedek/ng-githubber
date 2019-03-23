@@ -16,7 +16,9 @@ export class SearchComponent implements OnInit {
   }
 
   doSearch() {
-    this.onSearch.emit(this.searchTerm);
+    if(this.searchTerm) {
+      this.onSearch.emit(this.searchTerm);
+    }
   }
 
 }
