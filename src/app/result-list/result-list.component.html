@@ -2,6 +2,7 @@
   There were no repos found using the given keyword :(
 </div>
 <div *ngIf="results.length > 0">
+  <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
   <app-result-item 
     *ngFor="let result of results | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: totalItems }"
     [result]="result"

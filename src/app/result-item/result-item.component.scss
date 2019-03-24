@@ -7,7 +7,7 @@
     box-sizing: border-box;
     padding: 20px;
     margin: 10px auto;
-    border: 3px solid $c_dark; 
+    border: 1px solid $c-border; 
     text-align: center;
     position: relative;
     transition: height $transition-constant;
@@ -108,7 +108,7 @@ $badge-width: 120px;
 
 .btn {
     background-color: transparent;
-    border: 1px solid $c_dark;
+    border: 1px solid $c_border;
     transition: transform $transition-constant;
     cursor: pointer;
 
