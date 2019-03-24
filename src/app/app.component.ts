@@ -45,7 +45,7 @@ export class AppComponent {
   onShowCharts(repo: string) {
     this.gitHubService.getCommits(repo).subscribe((data:any) => {
       const chartData: Array<ChartData> = commitDataToBarChartDataArray(data.items);
-      this.results.map(result => {
+      this.results = this.results.map(result => {
         if(result.fullName === repo) {
           result.commitChartData = chartData;
           if(!chartData.length) {
@@ -58,7 +58,7 @@ export class AppComponent {
 
     this.gitHubService.getClosedPRs(repo).subscribe((data:any) => {
       const chartData: Array<ChartData> = prDataToPieChartDataArray(data.items);
-      this.results.map(result => {
+      this.results = this.results.map(result => {
         if(result.fullName === repo) {
           result.prChartData = chartData;
           if(!chartData.length) {

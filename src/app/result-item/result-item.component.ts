@@ -11,7 +11,7 @@ export class ResultItemComponent implements OnInit {
   @Output() onShowCharts = new EventEmitter<string>();
   @Output() onGetIssues = new EventEmitter<string>();
   public detailsVisible: boolean = false;
-  public chartColors = {domain: ['#ffa400', '#009ffd', '#2a2a72', '232528']};
+  public chartColors = {domain: ['#ffa400', '#009ffd', '#ce5374', '#2a2a72', '#232528']};
 
   constructor() { }
 
