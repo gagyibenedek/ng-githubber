@@ -40,3 +40,21 @@ export function parseResultItem(item: any): ResultItem {
     }
 }
 
+export const dummyResultItem = {
+    name: '',
+    fullName: '',
+    description: '',
+    url: '',
+    forksCount: 1,
+    stargazersCount: 1,
+    openIssuesCount: 1,
+    owner: {
+      login: '',
+      avatarUrl: ''
+    },
+    commitChartData: [],
+    prChartData: [],
+    noCommitData: true,
+    noPRData: true
+  };
+

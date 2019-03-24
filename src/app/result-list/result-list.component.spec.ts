@@ -4,24 +4,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { By } from "@angular/platform-browser";
 
 import { ResultListComponent } from './result-list.component';
-
-const dummyResultItem = {
-  name: '',
-  fullName: '',
-  description: '',
-  url: '',
-  forksCount: 1,
-  stargazersCount: 1,
-  openIssuesCount: 1,
-  owner: {
-    login: '',
-    avatarUrl: ''
-  },
-  commitChartData: [],
-  prChartData: [],
-  noCommitData: true,
-  noPRData: true
-};
+import { dummyResultItem } from '../../models/resultItem';
 
 describe('ResultListComponent', () => {
   let component: ResultListComponent;
