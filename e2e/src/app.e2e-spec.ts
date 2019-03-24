@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, ExpectedConditions } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -10,7 +10,14 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to githubber!');
+    expect(page.getTitleText()).toEqual('Githubber');
+  });
+
+  it('should perform a search that has in multiple results', () => {
+    page.navigateTo();
+    page.enterSearchTerm('angular');
+    page.startSearch();
+    expect(page.getResultItemCount()).toBeGreaterThan(0);
   });
 
   afterEach(async () => {
