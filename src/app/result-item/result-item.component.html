@@ -27,7 +27,7 @@
       <td>Open issues</td> 
       <td class="stat-value">{{result.openIssuesCount}}</td>
     </tr>
-    <tr>
+    <tr *ngIf="result.openIssuesCount > 0">
       <td colspan="2">
         <button class="btn issues" (click)="getIssues()">Show open issues</button>
       </td>

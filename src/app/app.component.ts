@@ -18,6 +18,7 @@ export class AppComponent {
   public isIssuesPanelOpen: boolean = false;
   public issuesCount: number = 0;
   public spinnerVisible: boolean = false;
+  public issuesUrl: string;
 
   constructor(private gitHubService: GitHubService) {}
 
@@ -77,6 +78,11 @@ export class AppComponent {
       this.issuesCount = data.total_count;
       this.isIssuesPanelOpen = true;
       this.spinnerVisible = false;
+      if(data.items && data.items.length > 0) {
+        const urlArray = data.items[0].html_url.split('/');
+        urlArray.pop();
+        this.issuesUrl = urlArray.join('/'); 
+      }
     })
   }
 

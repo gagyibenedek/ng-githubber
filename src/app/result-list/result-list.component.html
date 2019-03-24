@@ -9,9 +9,10 @@
     (onShowCharts)="showCharts($event)">
   </app-result-item>
   <pagination-controls (pageChange)="getPage($event)"></pagination-controls>
-  <div class="issues-wrapper" *ngIf="isIssuesPanelOpen" (click)="closeIssuesPanel()">
+  <div class="issues-wrapper" *ngIf="isIssuesPanelOpen">
     <div class="issues">
       <button (click)="closeIssuesPanel()" class="close"></button>
+      <h2 class="popup-title">The {{issues.length}} latest isses</h2>
       <ul class="issue-list" *ngIf="issues.length > 0">
         <li class="issue-item" 
           *ngFor="let issue of issues">
@@ -42,7 +43,7 @@
           </table>
         </li>
       </ul>
-
+      <a href="{{issuesUrl}}" target="_blank" rel="">See all issues</a>
     </div>
   </div>
 </div>

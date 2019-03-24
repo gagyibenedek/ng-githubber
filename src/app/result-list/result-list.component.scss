@@ -50,7 +50,6 @@
     list-style: none;
     padding: 0;
     font-size: $f_small;
-    width: 50%;
 }
 
 .issue-item {
@@ -76,6 +75,7 @@
 .value {
     font-weight: 700;
     text-align: right;
+    padding: 0 10px;
 }
 
 .ok {

@@ -14,6 +14,7 @@ export class ResultListComponent implements OnInit {
   @Input() issues: Array<IssueItem>;
   @Input() isIssuesPanelOpen: boolean;
   @Input() issuesCount: number;
+  @Input() issuesUrl: number;
   @Output() onGetPage = new EventEmitter<string>();
   @Output() onShowCharts = new EventEmitter<string>();
   @Output() onGetIssues = new EventEmitter<string>();
