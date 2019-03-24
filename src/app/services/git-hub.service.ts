@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class GitHubService {
-  private currentTerm: string;
+  private currentTerm: string = "";
   private currentFullName: string;
   private currentPage: number = 0; 
   constructor(private http: HttpClient) { }
