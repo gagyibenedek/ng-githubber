@@ -13,7 +13,7 @@ const mockGitHubService = {
   }
 };
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let mockService: any;
@@ -84,6 +84,8 @@ class MockResultList {
   public isIssuesPanelOpen;
   @Input('issuesCount')
   public issuesCount;
+  @Input('issuesUrl')
+  public issuesUrl;
   @Output('onGetPage')
   public onGetPage = new EventEmitter<void>();
   @Output('onShowCharts')

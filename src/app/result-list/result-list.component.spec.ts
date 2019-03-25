@@ -40,7 +40,7 @@ describe('ResultListComponent', () => {
     component.onCloseIssuesPanel = new EventEmitter();
     spyOn(component.onCloseIssuesPanel, 'emit');
     fixture.detectChanges();
-    fixture.debugElement.query(By.css('.issues-wrapper')).triggerEventHandler('click', null);
+    fixture.debugElement.query(By.css('.close')).triggerEventHandler('click', null);
     expect(component.onCloseIssuesPanel.emit).toHaveBeenCalled();
   });
 
