@@ -14,6 +14,6 @@ export function parseIssueItem(item: any): IssueItem {
     }
 }
 
-function dateToDaysSince(dateString: string) {
+function dateToDaysSince(dateString: string): number {
     return Math.trunc((new Date().valueOf() - new Date(dateString).valueOf())/(1000*60*60*24))
 }
